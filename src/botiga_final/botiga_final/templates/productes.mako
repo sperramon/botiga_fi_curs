@@ -47,7 +47,7 @@
              <input type='button' value='-' name='restar' id='restar' onClick="resta('${nom}');"/></td></tr>
          </table>
          <br/><br/>
-         <tr><td><input type="submit" value="Finalitzar Comanda" name="acabar" id="acabar"/></td></tr>
+         <input type="submit" value="Finalitzar Comanda" name="acabar" id="acabar"/>
       % endfor
    </form>
    <div id='cistella' name='cistella'>Comanda</div>
