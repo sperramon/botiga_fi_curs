@@ -1,6 +1,6 @@
 import os
 import cgi
-
+here = os.path.dirname(os.path.abspath(__file__))
 class Productes():
     dic_produ={}
     
@@ -8,7 +8,7 @@ class Productes():
         self.llegir_arxiu()
         
     def llegir_arxiu(self):
-        fitxer="productes.txt"
+        fitxer=here+"/productes.txt"
         if(self.comprovar_arxiu(fitxer)):
             arxiu=open(fitxer,'r')
             diccionari={}
@@ -36,17 +36,16 @@ class Productes():
     def captarProductes(self):
         formulari=self.agafarProductes()
         dic_form={}
-        for Nom,Stock,Preu in formulari
-            quantitat=request.[Nom]
-            dic_form.update({ID:{'Nom':Nom, 'Stock':quantitat, 'Preu':Preu}})
+        for Nom,Stock,Preu in formulari:
+            quantitat=request.get(Nom);
+            dic_form.update({ID:{'Nom':Nom, 'Stock':quantitat, 'Preu':Preu}});
         return dic_form
         
 
     def introduirDades(dadesRecollides):
-        arxiu = open("comanda.txt","a")
-        for local in resultats.keys():
-            for visitant in resultats[local].keys():
-                arxiu.write("%s/%s/%s/%s\n" % (str(local),str(visitant),str(resultats[local][visitant]._gols_local),str(resultats[local][visitant]._gols_visit)))
+        arxiu = open(here+"/comanda.txt","a");
+        for Nom,Stock,Preu in dadesRecollides.keys():
+            arxiu.write("%s/%s/%s\n" % (Nom,Stock,Preu));
         arxiu.close()
         return True
 
