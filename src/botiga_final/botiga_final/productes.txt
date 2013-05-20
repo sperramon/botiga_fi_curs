@@ -1,4 +1,4 @@
-01/Mandarines/3/3.5
-02/Pomes/10/1.5
-03/Platans/30/2.0
-04/Maduixes/5/4.5
+1/Mandarines/3/3.5
+2/Pomes/10/1.5
+3/Platans/30/2.0
+4/Maduixes/5/4.5
