@@ -2,6 +2,19 @@ import os
 import cgi
 here = os.path.dirname(os.path.abspath(__file__))
 class Producte():
+    """ Classe Producte
+    Dintre d'aquesta clase tenim els seguents identificadors
+    
+    identificador_compra -> ens indica el numero de comanda
+    identificador -> la id
+    nom -> el nom del producte
+    stock -> la quantitat que hem seleccionat o que puguem tenir a la botiga
+    preu -> el preu de cada unitat
+    
+    Tenim diferentes funcions bàsiques per modificar el valor dels atributs anteriors
+    i també obtenir-los.
+        
+    """
     identificador_compra=0
     identificador=0
     nom="defecte"
@@ -42,6 +55,14 @@ class Producte():
         return self.identificador_compra
 
 def llegir_arxiu():
+    """
+    Funció Llegir_arxiu
+    
+    Aquesta funció s'encarrega de llegir el contingut del fitxer productes.txt
+    Després, inicialitzem una llista i anem guardant dins els diferents productes.
+    Un cop hem acabat retornem la llista en qüestió.
+    
+    """
         fitxer=here+"/productes.txt"
         llistaRecollida=[]
         if(comprovar_arxiu(fitxer)):
@@ -62,12 +83,29 @@ def llegir_arxiu():
             return 0
         
 def comprovar_arxiu(arxiu):
+        """
+    Funció Comprovar_arxiu
+    
+    Aquesta funció s'encarrega de comprovar si els arxius existeixen.
+    
+    """
     if os.path.exists(arxiu):
         return 1
     else:
         return 0
 
 def captarProductes(request):
+    """
+    Funció captarProductes
+    
+    Aquesta funció s'encarrega de llegir el contingut del fitxer productes.txt
+    Després, inicialitzem una llista i anem guardant dins els diferents productes.
+    Un cop hem acabat retornem la llista en qüestió.
+    Amb el valor obtingut, el següent pas que fer es recollir tots els paràmetres POST
+    filtrar-los, i només tenir en compte aquells que tenen una quantitat diferent a 0.
+    Introduim les dades dels productes demanats en el fitxer de comandes i finalitzem.
+    
+    """
     llistaRecollida=llegir_arxiu()
     recorrerLlista=0;
     for identificador in request.POST:
@@ -81,6 +119,11 @@ def captarProductes(request):
     
 
 def introduirDades(llistaRecollida):
+    """
+    Funció introduirDades,
+    Per més informació llegiu sobre la funció captarProductes ja que va aniuada.
+    
+    """
     fitxer2=here+"/numerocomanda.txt"
     arxiu2 = open(fitxer2,"r");
     for linia2 in arxiu2:
@@ -108,6 +151,16 @@ def introduirDades(llistaRecollida):
     arxiu.close()
     
 def llegirComanda():
+    """
+    Funció llegirComanda
+    
+    Aquesta funció s'encarrega de llegir el contingut del fitxer comanda.txt
+    Després, inicialitzem una llista i anem guardant dins els diferents productes.
+    Un cop hem acabat retornem la llista en qüestió.
+    Aleshores, amb el fitxer .mako mostrem les diferents comandes que s'han fet
+    perque l'administrador tingui un coneixement del que va succeint.
+    
+    """
     fitxer=here+"/comanda.txt"
     llistaRecollida=[]
     if(comprovar_arxiu(fitxer)):
